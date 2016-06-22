@@ -19,11 +19,11 @@
         </repository>
     </repositories>
 
-    <!--开发一个普通的Hadoop项目，我们一般需要hadoop-common、hadoop-core两组依赖；
+    <!--开发一个普通的Hadoop项目，我们一般需要hadoop-common、hadoop-client两组依赖；
     如果需要读取HDFS上的文件内容，
     则需要hadoop-hdfs和hadoop-client另外两组依赖；
     如果需要读取HBase的数据，则需要再加入hbase-client。
-    这里我们只导入了hadoop-common和hadoop-core。-->
+    这里我们只导入了hadoop-common和hadoop-client。-->
     <dependencies>
 
 
