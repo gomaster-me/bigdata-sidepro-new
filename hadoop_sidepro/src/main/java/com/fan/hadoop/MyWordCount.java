@@ -82,7 +82,7 @@ public class MyWordCount {
         job.setMapOutputValueClass(IntWritable.class);
 
         FileInputFormat.setInputPaths(job,"c:/a.txt");
-        FileOutputFormat.setOutputPath(job,new Path("c:/wordcount/output22"));
+        FileOutputFormat.setOutputPath(job,new Path("c:/wordcount/output29"));
         boolean res = job.waitForCompletion(true);
         //int a = 1/0; 为了测试exit 1
         System.exit(res?0:1);

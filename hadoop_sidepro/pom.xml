@@ -25,16 +25,28 @@
     如果需要读取HBase的数据，则需要再加入hbase-client。
     这里我们只导入了hadoop-common和hadoop-core。-->
     <dependencies>
+
+
+
         <dependency>
             <groupId>org.apache.hadoop</groupId>
             <artifactId>hadoop-common</artifactId>
             <version>2.6.4</version>
         </dependency>
-        <dependency>
+
+        <!--<dependency>
             <groupId>org.apache.hadoop</groupId>
             <artifactId>hadoop-core</artifactId>
             <version>1.2.1</version>
+        </dependency>-->
+
+        <dependency>
+            <groupId>org.apache.hadoop</groupId>
+            <!--<artifactId>hadoop-mapreduce-client-core</artifactId>-->
+            <artifactId>hadoop-client</artifactId>
+            <version>2.6.4</version>
         </dependency>
+
     </dependencies>
 
 
