@@ -19,8 +19,9 @@ public class JoinReducer extends Reducer<Text, Text, Text, Text> {
 //        super.reduce(key, values, context);
         Iterator<Text> iterator = values.iterator();
         String studentName = "";
-        String studentClassName = "";
-        ArrayList list = new ArrayList();
+        //String studentClassName = "";
+//        ArrayList list = new ArrayList();
+        ArrayList studentClassNames = new ArrayList();
         while (iterator.hasNext()) {
             String fileName_flag = iterator.next().toString();
             String fileFlag = fileName_flag.split("\t")[1];
@@ -29,14 +30,14 @@ public class JoinReducer extends Reducer<Text, Text, Text, Text> {
             if (fileFlag.equals(LEFT_FILENAME_FLAG)) {
                 studentName = joinValue;
             } else if (fileFlag.equals(RIGHT_FILENAME_FLAG)) {
-                studentClassName = joinValue;
+                studentClassNames.add(joinValue);
             }
-            list.add(studentClassName);
+            //list.add(studentClassName);
         }
 
-        for (int i = 0; i < list.size(); i++) {
+        for (int i = 0; i < studentClassNames.size(); i++) {
 
-            context.write(new Text(studentName),new Text(list.get(i).toString()));
+            context.write(new Text(studentName),new Text(studentClassNames.get(i).toString()));
             
         }
 

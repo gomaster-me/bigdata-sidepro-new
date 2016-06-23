@@ -25,17 +25,17 @@ public class JoinMapper extends Mapper<LongWritable, Text, Text, Text> {
     protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
 //        super.map(key, value, context);
         //判断键值对 来源文件 打标签
-        String fileName = ((FileSplit) context.getInputSplit()).getPath().toString();//获得源数据文件
+        String filePath = ((FileSplit) context.getInputSplit()).getPath().toString();//获得源数据文件
         String joinKey = "";
         String joinValue = "";
         String fileFlag = "";
         String[] words = value.toString().split("\t");
 
-        if (fileName.contains(LEFT_FILENAME)) {
+        if (filePath.contains(LEFT_FILENAME)) {
             fileFlag = LEFT_FILENAME_FLAG;
             joinKey = words[1];
             joinValue = words[0];
-        } else if (fileName.contains(RIGHT_FILENAME)) {
+        } else if (filePath.contains(RIGHT_FILENAME)) {
             fileFlag = RIGHT_FILENAME_FLAG;
             joinKey = words[0];
             joinValue = words[1];
@@ -43,6 +43,6 @@ public class JoinMapper extends Mapper<LongWritable, Text, Text, Text> {
         text_key.set(joinKey);
         text_value.set(joinValue + "\t" + fileFlag);
         //context.write(new Text(joinKey),new Text(joinValue+"\t"+fileFlag));
-        context.write(text_key, text_value);
+        context.write(text_key,text_value);
     }
 }

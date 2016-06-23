@@ -38,7 +38,7 @@ public class JoinDriver {
 //        FileInputFormat.setInputPaths(job, new Path("c:/student_info.txt"),new Path("c:/student_class_name.txt"));
         FileInputFormat.setInputPaths(job, new Path("c:/aaa/"));
 //        FileInputFormat.addInputPaths(job, "c:/student");
-        FileOutputFormat.setOutputPath(job, new Path("c:/student/output03"));
+        FileOutputFormat.setOutputPath(job, new Path("c:/student/output08"));
 //        FileInputFormat.setInputPaths(job, new Path(args[0]));
 //        FileOutputFormat.setOutputPath(job, new Path(args[1]));
 
