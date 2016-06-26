@@ -1,0 +1,5 @@
+00001	chinese
+00001	math
+00002	music
+00002	math
+00003	physic
