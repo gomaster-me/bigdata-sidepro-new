@@ -23,7 +23,7 @@ public class HdfsClientDemo {
     public void init() throws Exception {
 
         Configuration conf = new Configuration();
-        conf.set("fs.defaultFS", "hdfs://node01:9000");
+        conf.set("fs.defaultFS", "hdfs://node01:9000");//如果不设置则默认为本地文件系统 fs.defaultFS=file:///
 
         //拿到一个文件系统操作的客户端实例对象
         /*fs = FileSystem.get(conf);*/
