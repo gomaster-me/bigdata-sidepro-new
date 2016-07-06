@@ -1,4 +1,4 @@
-package com.fan.hadoop.in_action;
+package com.fan.hadoop.in_action.wordcount;
 
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.LongWritable;
@@ -19,7 +19,7 @@ public class WCMapper extends Mapper<LongWritable, Text, Text, IntWritable> {
     protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
 //        super.map(key, value, context);
         StringTokenizer stringTokenizer = new StringTokenizer(value.toString(), " ");
-        while (stringTokenizer.hasMoreTokens()) {
+          while (stringTokenizer.hasMoreTokens()) {
             String word = stringTokenizer.nextToken();
             //context.write(new Text(word),new IntWritable(1));
             text.set(word);

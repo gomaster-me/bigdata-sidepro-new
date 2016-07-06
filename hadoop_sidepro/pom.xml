@@ -71,9 +71,9 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <!--<mainClass>com.fan.hadoop.WordCount</mainClass>-->
-                            <!--<mainClass>com.fan.hadoop.MyWordCount</mainClass>-->
-                            <mainClass>com.fan.hadoop.in_action.WCDriver</mainClass>
+                            <!--<mainClass>com.fan.hadoop.in_action.wordcount.WordCount</mainClass>-->
+                            <!--<mainClass>com.fan.hadoop.in_action.wordcount.MyWordCount</mainClass>-->
+                            <mainClass>com.fan.hadoop.in_action.wordcount.WCDriver</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>

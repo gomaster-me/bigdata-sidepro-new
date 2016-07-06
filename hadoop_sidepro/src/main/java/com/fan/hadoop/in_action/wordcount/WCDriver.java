@@ -1,4 +1,4 @@
-package com.fan.hadoop.in_action;
+package com.fan.hadoop.in_action.wordcount;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
