@@ -1,4 +1,4 @@
-package com.fan.hadoop;
+package com.fan.hadoop.in_action.wordcount;
 
 import java.io.IOException;
 import java.util.*;
