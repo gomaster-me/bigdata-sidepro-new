@@ -23,6 +23,7 @@ public class WCDriver {
 
         job.setJarByClass(WCDriver.class);
         job.setMapperClass(WCMapper.class);
+        job.setCombinerClass(IntSumReducer.class);
         job.setReducerClass(WCReducer.class);
 
         /*job.setMapOutputKeyClass(Text.class); 这两段多余
@@ -34,8 +35,6 @@ public class WCDriver {
         FileOutputFormat.setOutputPath(job, new Path("c:/com.fan.hadoop.in_action.wordcount/output40"));*/
         FileInputFormat.setInputPaths(job, new Path(args[0]));//addInputPaths(job,string)，但两者都可以指定多个输入路径
         FileOutputFormat.setOutputPath(job, new Path(args[1]));
-
-        job.setCombinerClass(IntSumReducer.class);
 
         boolean res = job.waitForCompletion(true);
         //int a = 1/0; 为了测试exit 1
