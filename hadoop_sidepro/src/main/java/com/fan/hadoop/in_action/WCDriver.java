@@ -1,4 +1,4 @@
-package in_action;
+package com.fan.hadoop.in_action;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
@@ -22,20 +22,18 @@ public class WCDriver {
         job = Job.getInstance(new Configuration());
 
         job.setJarByClass(WCDriver.class);
-
         job.setMapperClass(WCMapper.class);
         job.setReducerClass(WCReducer.class);
 
-        job.setMapOutputKeyClass(Text.class);
-        job.setMapOutputValueClass(IntWritable.class);
-
+        /*job.setMapOutputKeyClass(Text.class); 这两段多余
+        job.setMapOutputValueClass(IntWritable.class);*/
         job.setOutputKeyClass(Text.class);
-        job.setMapOutputValueClass(IntWritable.class);
+        job.setOutputValueClass(IntWritable.class);
 
-        FileInputFormat.setInputPaths(job, "c:/a.txt");
-        FileOutputFormat.setOutputPath(job, new Path("c:/wordcount/output40"));
-//        FileInputFormat.setInputPaths(job, new Path(args[0]));
-//        FileOutputFormat.setOutputPath(job, new Path(args[1]));
+       /* FileInputFormat.setInputPaths(job, "c:/a.txt");
+        FileOutputFormat.setOutputPath(job, new Path("c:/com.fan.hadoop.in_action.wordcount/output40"));*/
+        FileInputFormat.setInputPaths(job, new Path(args[0]));//addInputPaths(job,string)，但两者都可以指定多个输入路径
+        FileOutputFormat.setOutputPath(job, new Path(args[1]));
 
         job.setCombinerClass(IntSumReducer.class);
 

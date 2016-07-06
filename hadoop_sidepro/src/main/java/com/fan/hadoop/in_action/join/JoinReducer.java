@@ -1,4 +1,4 @@
-package in_action.join;
+package com.fan.hadoop.in_action.join;
 
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;

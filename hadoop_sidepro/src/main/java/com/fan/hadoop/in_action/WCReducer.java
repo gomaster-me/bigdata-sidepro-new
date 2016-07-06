@@ -1,4 +1,4 @@
-package in_action;
+package com.fan.hadoop.in_action;
 
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
