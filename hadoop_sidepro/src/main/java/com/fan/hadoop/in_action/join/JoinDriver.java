@@ -1,4 +1,4 @@
-package in_action.join;
+package com.fan.hadoop.in_action.join;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
@@ -20,7 +20,7 @@ public class JoinDriver {
 
         job = Job.getInstance(new Configuration());
 
-        job.setJarByClass(in_action.join.JoinDriver.class);
+        job.setJarByClass(com.fan.hadoop.in_action.join.JoinDriver.class);
 
         job.setMapperClass(JoinMapper.class);
         job.setReducerClass(JoinReducer.class);

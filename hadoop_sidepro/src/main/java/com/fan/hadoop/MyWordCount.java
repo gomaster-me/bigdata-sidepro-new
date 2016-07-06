@@ -24,7 +24,7 @@ public class MyWordCount {
     public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException {
         /*//1. 检验函数
         *//*if (args.length != 2) {
-            System.err.println("args useage : wordcount <in> <out>");
+            System.err.println("args useage : com.fan.hadoop.in_action.wordcount <in> <out>");
             System.exit(2);
         }*//*
         //2. 初始化配置
@@ -52,7 +52,7 @@ public class MyWordCount {
         job.setOutputFormatClass(TextOutputFormat.class);
 
         FileInputFormat.setInputPaths(job,"c:/a.txt");
-        FileOutputFormat.setOutputPath(job,new Path("c:/wordcount/output"));
+        FileOutputFormat.setOutputPath(job,new Path("c:/com.fan.hadoop.in_action.wordcount/output"));
 
 //        FileInputFormat.addInputPath(job, new Path(args[0]));
 //        FileOutputFormat.setOutputPath(job, new Path(args[1]));
@@ -75,14 +75,13 @@ public class MyWordCount {
         job.setMapperClass(WordMapper.class);
         job.setReducerClass(WordReducer.class);
 
-        job.setMapOutputKeyClass(Text.class);
-        job.setMapOutputValueClass(IntWritable.class);
+
 
         job.setOutputKeyClass(Text.class);
-        job.setMapOutputValueClass(IntWritable.class);
+        job.setOutputValueClass(IntWritable.class);
 
         FileInputFormat.setInputPaths(job,"c:/a.txt");
-        FileOutputFormat.setOutputPath(job,new Path("c:/wordcount/output29"));
+        FileOutputFormat.setOutputPath(job,new Path("c:/com.fan.hadoop.in_action.wordcount/output29"));
         boolean res = job.waitForCompletion(true);
         //int a = 1/0; 为了测试exit 1
         System.exit(res?0:1);

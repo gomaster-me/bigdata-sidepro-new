@@ -1,4 +1,4 @@
-package wordcount;
+package com.fan.hadoop.in_action.wordcount;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
@@ -25,14 +25,11 @@ public class SimpleWordCountDriver {
         job.setMapperClass(SimpleWordCountMapper.class);
         job.setReducerClass(SimpleWordCountReducer.class);
 
-        job.setMapOutputKeyClass(Text.class);
-        job.setMapOutputValueClass(IntWritable.class);
-
         job.setOutputKeyClass(Text.class);
-        job.setMapOutputValueClass(IntWritable.class);
+        job.setOutputValueClass(IntWritable.class);
 
         FileInputFormat.setInputPaths(job,"c:/a.txt");
-        FileOutputFormat.setOutputPath(job,new Path("c:/wordcount/output33"));
+        FileOutputFormat.setOutputPath(job,new Path("c:/com.fan.hadoop.in_action.wordcount/output33"));
         boolean res = job.waitForCompletion(true);
         //int a = 1/0; 为了测试exit 1
         System.exit(res?0:1);
