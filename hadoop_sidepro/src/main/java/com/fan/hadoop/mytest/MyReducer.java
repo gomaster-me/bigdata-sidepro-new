@@ -21,7 +21,8 @@ public class MyReducer extends Reducer<Text,IntWritable,Text,IntWritable> {
     protected void reduce(Text key, Iterable<IntWritable> values, Context context) throws IOException, InterruptedException {
         int  sum = 0;
         for (IntWritable value : values) {
-            sum += Integer.parseInt(value.toString());
+            //sum += Integer.parseInt(value.toString());
+            sum += value.get();
         }
         total.set(sum);
         context.write(key, total);
