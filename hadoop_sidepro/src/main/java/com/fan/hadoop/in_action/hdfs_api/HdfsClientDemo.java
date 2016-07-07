@@ -34,7 +34,7 @@ public class HdfsClientDemo {
     @Test
     public void testUpload() throws Exception {
         //Thread.sleep(500000);
-        fs.copyFromLocalFile(new Path("c:/a.txt"), new Path("/a.txt.copy"));
+        fs.copyFromLocalFile(new Path("c:/a.txt"), new Path("/mytest/a.txt.copy"));
         fs.close();
     }
 
