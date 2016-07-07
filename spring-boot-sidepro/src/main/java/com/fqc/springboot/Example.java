@@ -7,11 +7,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @EnableAutoConfiguration
-class Example{
+public class Example {
     @RequestMapping("/")
     String home() {
         return "hello spring boot ";
     }
+
     public static void main(String[] args) {
         SpringApplication.run(Example.class, args);
     }
