@@ -39,6 +39,6 @@ public class WCDriver {
         boolean res = job.waitForCompletion(true);
         //int a = 1/0; 为了测试exit 1
         System.exit(res ? 0 : 1);
-
     }
+
 }
