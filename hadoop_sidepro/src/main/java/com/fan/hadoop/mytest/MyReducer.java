@@ -7,6 +7,7 @@ import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.*;
 
 import java.io.IOException;
+import java.util.Iterator;
 
 import static com.sun.tools.doclint.Entity.sum;
 
@@ -20,6 +21,15 @@ public class MyReducer extends Reducer<Text,IntWritable,Text,IntWritable> {
     @Override
     protected void reduce(Text key, Iterable<IntWritable> values, Context context) throws IOException, InterruptedException {
         int  sum = 0;
+
+
+/*
+        Iterator<IntWritable> iterator = values.iterator();
+        while (iterator.hasNext()) {
+             sum += iterator.next().get();
+        }
+*/
+
         for (IntWritable value : values) {
             //sum += Integer.parseInt(value.toString());
             sum += value.get();
