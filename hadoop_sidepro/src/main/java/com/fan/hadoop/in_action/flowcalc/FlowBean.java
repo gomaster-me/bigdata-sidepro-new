@@ -56,6 +56,10 @@ public class FlowBean implements Writable {
     public void readFields(DataInput dataInput) throws IOException {
         upFlow = dataInput.readLong();
         downFlow = dataInput.readLong();
+    }
 
+    @Override
+    public String toString() {
+        return  upFlow+"\t"+downFlow+"\t"+sumFlow;
     }
 }
