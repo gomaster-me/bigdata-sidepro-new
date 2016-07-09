@@ -48,7 +48,7 @@ public class CustomerController {
         return customer;
     }
 
-    @RequestMapping(value = "/add/{name}/{id}",method = RequestMethod.GET) //为了模拟，id这里手动传一下
+    @RequestMapping(value = "/add/{name}/{id}", method = RequestMethod.GET) //为了模拟，id这里手动传一下
     public String add(@PathVariable String name, @PathVariable Integer id) {
         Customer customer = null;
         String message = "";
@@ -80,6 +80,25 @@ public class CustomerController {
         customerList.add(customer);
         message = "增加ok";
 
+        return message;
+
+    }
+
+
+    //客户端直接执行delete方法
+    @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
+    public String delete(@PathVariable Integer id) {
+        String message = "删除失败";
+        for (Customer c : customerList) {
+            if (c.getId() == Long.parseLong(id.toString())) {
+                customerList.remove(c);
+
+                //break;//还是要break;
+                message = "删除成功";
+                return message;
+            }
+            message = "未找到";
+        }
         return message;
 
     }
