@@ -7,6 +7,9 @@ public class Customer {
     private Long id;
     private String name;
 
+//    private Address address;
+    private Address address = new Address(); //默认就初始化地址
+
     public Customer() {
     }
 
@@ -63,4 +66,14 @@ public class Customer {
     public void setName(String name) {
         this.name = name;
     }
+
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
 }

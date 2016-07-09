@@ -17,7 +17,7 @@ import java.util.List;
 @RequestMapping("/customer")
 @EnableAutoConfiguration
 public class CustomerController {
-    public static final ArrayList<Customer> customerList = new ArrayList<Customer>();
+    public static final ArrayList<Customer> customerList = new ArrayList<>();
 
     static {
         customerList.add(new Customer(1L, "kobe kobe"));
