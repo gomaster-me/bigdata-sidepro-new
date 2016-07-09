@@ -28,6 +28,14 @@ public class RestFulTest {
         return String.format("hello,%s", name);
     }
 
+    @RequestMapping(value = "/{name}/{id}", method = RequestMethod.POST)
+    //http://localhost:8080/rest-api/kobe/1 ,通过uri方式映射
+    public String greetings_post_v2(@PathVariable String name, @PathVariable String id) {
+        return String.format("hello,%s, %s", name, id);
+    }
+
+
+
     public static void main(String[] args) {
         SpringApplication.run(RestFulTest.class, args);
     }
