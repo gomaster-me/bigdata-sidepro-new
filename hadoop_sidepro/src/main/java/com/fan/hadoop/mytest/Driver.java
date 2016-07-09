@@ -26,7 +26,6 @@ public class Driver {
         job.setCombinerClass(IntSumReducer.class);
         job.setReducerClass(MyReducer.class);
 
-
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(IntWritable.class);
 

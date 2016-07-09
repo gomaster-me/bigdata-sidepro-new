@@ -29,10 +29,10 @@ public class FlowCalcDriver {
         job.setMapperClass(FlowCalcMapper.class);
         job.setReducerClass(FlowCalcReducer.class);
 
-        /*job.setMapOutputKeyClass(Text.class); 这两段多余
+        /*job.setMapOutputKeyClass(Text.class); 这两段多余，//v2 纠正之前的错误(并不多余)，将mapper的输出设置 需要明确指定，前提是与reducer的输出不同的情况下。否则可以不设定
         job.setMapOutputValueClass(IntWritable.class);*/
-        job.setOutputKeyClass(Text.class);
-        job.setOutputValueClass(FlowBean.class);
+        job.setOutputKeyClass(FlowBean.class);
+        job.setOutputValueClass(Text.class);
 
         FileInputFormat.setInputPaths(job, "c:/flow/");
         FileOutputFormat.setOutputPath(job, new Path("c:/flow/flowsum"));

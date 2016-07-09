@@ -26,9 +26,9 @@ public class FlowSortDriver {
         job.setMapperClass(FlowSortMapper.class);
         job.setReducerClass(FlowSortReducer.class);
 
-        /*job.setMapOutputKeyClass(Text.class); 这两段多余
+        /*job.setMapOutputKeyClass(Text.class); 这两段多余 //v2 纠正之前的错误(并不多余)，将mapper的输出设置 需要明确指定，前提是与reducer的输出不同的情况下。否则可以不设定
         job.setMapOutputValueClass(IntWritable.class);*/
-
+        //该实例中就需要明确指定，否则只输出最终结果的类型，那么mapper输出阶段类型就匹配不上
 
         //指定mapper输出数据的kv类型
         job.setMapOutputKeyClass(FlowBean.class);
