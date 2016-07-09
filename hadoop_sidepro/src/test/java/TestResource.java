@@ -6,7 +6,7 @@ import java.net.URL;
  */
 public class TestResource {
     public static void main(String[] args) {
-        TestResource tr = new TestResource();
+        /*TestResource tr = new TestResource();
         //System.out.println(new TestResource().getClass().getClassLoader().getResource(".").getPath());
 
 
@@ -19,6 +19,7 @@ public class TestResource {
 
 
         URL xmlpath = tr.getClass().getClassLoader().getResource("student_info.txt");
-        System.out.println(xmlpath);
+        System.out.println(xmlpath);*/
+
     }
 }
