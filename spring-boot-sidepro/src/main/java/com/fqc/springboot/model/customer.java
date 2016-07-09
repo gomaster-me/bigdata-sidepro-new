@@ -15,6 +15,39 @@ public class Customer {
         this.name = name;
     }
 
+
+    /**
+     *  /*
+     *  only id setter and getter
+     *  [
+     {
+     "id": 1
+     },
+     {
+     "id": 2
+     },
+     {
+     "id": 3
+     }
+     ]*/
+
+   /* [  id,name getter and setter
+    {
+        "id": 1,
+            "name": "kobe kobe"
+    },
+    {
+        "id": 2,
+            "name": "james james"
+    },
+    {
+        "id": 3,
+            "name": "jordan jordan"
+    }
+    ]
+     */
+
+
     public Long getId() {
         return id;
     }
@@ -23,4 +56,11 @@ public class Customer {
         this.id = id;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }
