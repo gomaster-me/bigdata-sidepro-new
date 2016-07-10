@@ -48,19 +48,19 @@ public class CustomerController {
         return customer;
     }
 
-    @RequestMapping(value = "/add/{name}/{id}",method = RequestMethod.GET) //为了模拟，id这里手动传一下
+    @RequestMapping(value = "/add/{name}/{id}", method = RequestMethod.GET) //为了模拟，id这里手动传一下
     public String add(@PathVariable String name, @PathVariable Integer id) {
         Customer customer = null;
         String message = "";
 
         //customerList.contains() ,可以重写id compareto方法，认为是对象相等，这里就先不做了。
-         /*for (Customer c : customerList) {
+         /*for (Customer.java c : customerList) {
              if (c.getId().equals(Long.parseLong(id.toString()))) {
                  //v1注意使用equals比较对象，否则即使相等也会判断不等走到下一步修改对象了..很严重的问题
                  //但是id传进来是固定的，遍历的对象的id是不固定的.逻辑有问题
                  message = "已经存在";
              } else {
-                 customer = new Customer();
+                 customer = new Customer.java();
                  customer.setId(Long.parseLong(id.toString()));
                  customerList.add(customer);
                  message = "增加ok";
@@ -80,6 +80,43 @@ public class CustomerController {
         customerList.add(customer);
         message = "增加ok";
 
+        return message;
+
+    }
+
+
+    @RequestMapping(value = "/{id}/{name}",method = RequestMethod.POST)
+    public String update(@PathVariable Integer id,@PathVariable String name) {
+        String message = "更新失败";
+
+        for (Customer c : customerList) {
+            if (c.getId() == Long.parseLong(id.toString())) {
+                c.setName(name);
+                message = "修改成功";
+                return message;
+            } else {
+                message = "未找到";
+            }
+        }
+
+        return message;
+    }
+
+
+    //客户端直接执行delete方法
+    @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
+    public String delete(@PathVariable Integer id) {
+        String message = "删除失败";
+        for (Customer c : customerList) {
+            if (c.getId() == Long.parseLong(id.toString())) {
+                customerList.remove(c);
+
+                //break;//还是要break;
+                message = "删除成功";
+                return message;
+            }
+            message = "未找到";
+        }
         return message;
 
     }
