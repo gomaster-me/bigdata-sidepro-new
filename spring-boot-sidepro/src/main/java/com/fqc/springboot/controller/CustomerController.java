@@ -54,13 +54,13 @@ public class CustomerController {
         String message = "";
 
         //customerList.contains() ,可以重写id compareto方法，认为是对象相等，这里就先不做了。
-         /*for (Customer c : customerList) {
+         /*for (Customer.java c : customerList) {
              if (c.getId().equals(Long.parseLong(id.toString()))) {
                  //v1注意使用equals比较对象，否则即使相等也会判断不等走到下一步修改对象了..很严重的问题
                  //但是id传进来是固定的，遍历的对象的id是不固定的.逻辑有问题
                  message = "已经存在";
              } else {
-                 customer = new Customer();
+                 customer = new Customer.java();
                  customer.setId(Long.parseLong(id.toString()));
                  customerList.add(customer);
                  message = "增加ok";
@@ -82,6 +82,24 @@ public class CustomerController {
 
         return message;
 
+    }
+
+
+    @RequestMapping(value = "/{id}/{name}",method = RequestMethod.POST)
+    public String update(@PathVariable Integer id,@PathVariable String name) {
+        String message = "更新失败";
+
+        for (Customer c : customerList) {
+            if (c.getId() == Long.parseLong(id.toString())) {
+                c.setName(name);
+                message = "修改成功";
+                return message;
+            } else {
+                message = "未找到";
+            }
+        }
+
+        return message;
     }
 
 
