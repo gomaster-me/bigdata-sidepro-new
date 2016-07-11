@@ -38,7 +38,7 @@ public class CustomerController {
                 customer = c;
             }
         }
-        if (customer == null) {
+        if (customer == null) { //注意在内存中删除后，再执行该方法会奏效~
             //以后可以对象统一消息，封装信息
             //return "not found"; 或者 throw new Exception
             return null;//暂时处理
