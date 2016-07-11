@@ -33,7 +33,22 @@ public class OrderJoin {
         protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
             //通过上下文获取切割对象 并通过转换获取到文件信息
             FileSplit fileSplit = (FileSplit) context.getInputSplit();
-            Path path = fileSplit.getPath();
+            String fileName = fileSplit.getPath().getName();
+            if (fileName == Info) {
+                //
+                String[] line = value.toString().split(",");
+                String orderId = line[1];
+                
+
+
+
+
+            } else { //这里默认认为有俩文件,先简单处理 可以优化 // TODO: 7/11/16
+
+
+            }
+
+
 
 
 
