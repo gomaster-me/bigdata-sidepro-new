@@ -48,7 +48,7 @@ public class CustomerController {
         return customer;
     }
 
-    @RequestMapping(value = "/add/{name}/{id}", method = RequestMethod.GET) //为了模拟，id这里手动传一下
+    @RequestMapping(value = "/add/{name}/{id}", method = RequestMethod.GET) //为了模拟，id这里手动传一下。// TODO: 2016/7/10
     public String add(@PathVariable String name, @PathVariable Integer id) {
         Customer customer = null;
         String message = "";
@@ -83,6 +83,7 @@ public class CustomerController {
         return message;
 
     }
+
 
 
     @RequestMapping(value = "/{id}/{name}",method = RequestMethod.POST)
