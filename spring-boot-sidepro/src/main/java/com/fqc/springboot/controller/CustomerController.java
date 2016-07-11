@@ -1,12 +1,11 @@
 package com.fqc.springboot.controller;
 
 import com.fqc.springboot.model.Customer;
+import com.fqc.springboot.model.SimpleCustomer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +25,7 @@ public class CustomerController {
         customerList.add(new Customer(3L, "jordan jordan"));
     }
 
-    @RequestMapping(value = {"/list", ""}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/list"}, method = RequestMethod.GET)
     public List<Customer> list() {
         return customerList;
     }
@@ -84,10 +83,49 @@ public class CustomerController {
 
     }
 
-    @RequestMapping(value = "",method = RequestMethod.POST)
-    public void addCustomer(Customer customer) {
+    @RequestMapping(value = "/add",method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE,consumes = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public void addCustomer(@RequestBody Customer customer) {
         customerList.add(customer);
+
+
+        // TODO: 2016/7/11  目前是415错误，换一种思路先
+        /*{
+            "timestamp": 1468244852118,
+                "status": 415,
+                "error": "Unsupported Media Type",
+                "exception": "org.springframework.web.HttpMediaTypeNotSupportedException",
+                "message": "Content type 'text/plain;charset=UTF-8' not supported",
+                "path": "/customer"
+        }*/
     }
+
+
+//    region  for 415 error. 最终的解决方案是 使用 Advancated rest client 添加了头部 Content-Type application/json 直接就成功了
+    //4xx 客户端问题
+    //5xx 服务端问题
+    public static final ArrayList scs = new ArrayList();
+
+    static{
+        scs.add(new SimpleCustomer("1", "zhangsan1"));
+        scs.add(new SimpleCustomer("2", "zhangsan2"));
+        scs.add(new SimpleCustomer("3", "zhangsan3"));
+    }
+
+
+    @RequestMapping(value = "/sc",method = RequestMethod.GET)
+    public List<SimpleCustomer> getAll(SimpleCustomer sc) {
+       return scs;
+    }
+
+    @RequestMapping(value = "/sc",method = RequestMethod.POST)
+    public void addSimpleCustomer(@RequestBody SimpleCustomer sc) {
+        scs.add(sc);
+
+    }
+    
+    
+//    endregion
 
 
 
