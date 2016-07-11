@@ -83,7 +83,7 @@ public class CustomerController {
 
     }
 
-    @RequestMapping(value = "/add",method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE,consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/add", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public void addCustomer(@RequestBody Customer customer) {
         customerList.add(customer);
@@ -101,36 +101,40 @@ public class CustomerController {
     }
 
 
-//    region  for 415 error. 最终的解决方案是 使用 Advancated rest client 添加了头部 Content-Type application/json 直接就成功了
+    //    region  for 415 error. 最终的解决方案是 使用 Advancated rest client 添加了头部 Content-Type application/json 直接就成功了
     //4xx 客户端问题
     //5xx 服务端问题
+    //这里的内容可以参看 https://github.com/spring-projects/spring-boot/issues/3313
+    //http://briansjavablog.blogspot.jp/2012/08/rest-services-with-spring.html
+    //http://forum.spring.io/forum/spring-projects/web/116053-http-4115-unsupported-media-type-application-json
+    //http://www.coderanch.com/t/605202/Spring/Spring-mvc-request-mapping-POST
+    //http://stackoverflow.com/questions/14751536/http-status-415-unsupported-media-type
     public static final ArrayList scs = new ArrayList();
 
-    static{
+    static {
         scs.add(new SimpleCustomer("1", "zhangsan1"));
         scs.add(new SimpleCustomer("2", "zhangsan2"));
         scs.add(new SimpleCustomer("3", "zhangsan3"));
     }
 
 
-    @RequestMapping(value = "/sc",method = RequestMethod.GET)
+    @RequestMapping(value = "/sc", method = RequestMethod.GET)
     public List<SimpleCustomer> getAll(SimpleCustomer sc) {
-       return scs;
+        return scs;
     }
 
-    @RequestMapping(value = "/sc",method = RequestMethod.POST)
+    @RequestMapping(value = "/sc", method = RequestMethod.POST)
     public void addSimpleCustomer(@RequestBody SimpleCustomer sc) {
         scs.add(sc);
 
     }
-    
-    
+
+
 //    endregion
 
 
-
-    @RequestMapping(value = "/{id}/{name}",method = RequestMethod.POST)
-    public String update(@PathVariable Integer id,@PathVariable String name) {
+    @RequestMapping(value = "/{id}/{name}", method = RequestMethod.POST)
+    public String update(@PathVariable Integer id, @PathVariable String name) {
         String message = "更新失败";
 
         for (Customer c : customerList) {
