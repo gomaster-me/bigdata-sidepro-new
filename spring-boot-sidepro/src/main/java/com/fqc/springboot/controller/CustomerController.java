@@ -84,6 +84,11 @@ public class CustomerController {
 
     }
 
+    @RequestMapping(value = "",method = RequestMethod.POST)
+    public void addCustomer(Customer customer) {
+        customerList.add(customer);
+    }
+
 
 
     @RequestMapping(value = "/{id}/{name}",method = RequestMethod.POST)
