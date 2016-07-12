@@ -40,4 +40,14 @@ public class Address {
     public void setPin(String pin) {
         this.pin = pin;
     }
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "Ststreet='" + Ststreet + '\'' +
+                ", city='" + city + '\'' +
+                ", state='" + state + '\'' +
+                ", pin='" + pin + '\'' +
+                '}';
+    }
 }

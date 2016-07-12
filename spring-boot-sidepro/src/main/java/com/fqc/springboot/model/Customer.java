@@ -77,4 +77,13 @@ public class Customer {
      */
 //endregion
 
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", address=" + address +
+                '}';
+    }
 }

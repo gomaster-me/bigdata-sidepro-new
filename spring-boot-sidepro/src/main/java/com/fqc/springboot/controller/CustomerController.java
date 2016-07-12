@@ -14,7 +14,7 @@ import java.util.List;
  * Created by fqc on 2016/7/9.
  */
 @RestController
-@RequestMapping("/customer")
+@RequestMapping("/customers")
 @EnableAutoConfiguration
 public class CustomerController {
     public static final ArrayList<Customer> customerList = new ArrayList<>();
@@ -25,7 +25,7 @@ public class CustomerController {
         customerList.add(new Customer(3L, "jordan jordan"));
     }
 
-    @RequestMapping(value = {"/list"}, method = RequestMethod.GET)
+    @RequestMapping(value ={"","/list"}, method = RequestMethod.GET)
     public List<Customer> list() {
         return customerList;
     }
@@ -83,8 +83,9 @@ public class CustomerController {
 
     }
 
-    @RequestMapping(value = "/add", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseBody
+    //@RequestMapping(value = "/add", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    //@ResponseBody
     public void addCustomer(@RequestBody Customer customer) {
         customerList.add(customer);
 
@@ -152,7 +153,7 @@ public class CustomerController {
 
 
     //客户端直接执行delete方法
-    @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public String delete(@PathVariable Integer id) {
         String message = "删除失败";
         for (Customer c : customerList) {
