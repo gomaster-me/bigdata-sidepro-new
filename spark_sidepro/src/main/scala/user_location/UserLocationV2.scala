@@ -9,7 +9,7 @@ import org.apache.spark.{SparkConf, SparkContext}
 object UserLocationV2 {
   def main(args: Array[String]) {
 
-    val conf: SparkConf = new SparkConf().setAppName("UserLocationV2").setMaster("local[2]")
+    val conf: SparkConf = new SparkConf().setAppName("UserLocationV2").setMaster("local[1]")
     val sc: SparkContext = new SparkContext(conf)
 
     val rdd0 = sc.textFile("c:/userlocation").map(line => {
@@ -24,7 +24,7 @@ object UserLocationV2 {
 
       if (state == "1") connTime = -time.toLong else connTime = time.toLong
 
-      ((mobile,location),connTime)
+      ((mobile, location), connTime)
 
     })
 
@@ -36,31 +36,55 @@ object UserLocationV2 {
 
     //合并计算求出top2
     rdd1.mapValues()*/
-    
-    val rdd1: RDD[((String, String), Long)] = rdd0.reduceByKey(_+_)//手机基站每个的停留时间 变形的wc
-    println("rdd1.collect().toBuffer = " + rdd1.collect().toBuffer)//rdd1.collect().toBuffer = ArrayBuffer(((15201098976,16030401EAFB68F1E3CDF819735E1C66),97500), ((18688888888,16030401EAFB68F1E3CDF819735E1C66),87600), ((13331178849,CC0710CC94ECC657A8561DE549D940E0),600), ((15201098976,CC0710CC94ECC657A8561DE549D940E0),1900), ((15201098976,9F36407EAD0629FC166F14DDE7970F68),54000), ((13331178849,16030401EAFB68F1E3CDF819735E1C66),87600), ((18611132889,16030401EAFB68F1E3CDF819735E1C66),97500))
 
-    val rdd2 = rdd1.map(t=>{//拆分出基站
-      val mobile= t._1._1
-      val lac= t._1._2
-      val time= t._2
-      (lac,(mobile,time))
+    val rdd1: RDD[((String, String), Long)] = rdd0.reduceByKey(_ + _,5) //手机基站每个的停留时间 变形的wc reduce(func,partitionNum)
+    println("rdd1.collect().toBuffer = " + rdd1.collect().toBuffer) //rdd1.collect().toBuffer = ArrayBuffer(((15201098976,16030401EAFB68F1E3CDF819735E1C66),97500), ((18688888888,16030401EAFB68F1E3CDF819735E1C66),87600), ((13331178849,CC0710CC94ECC657A8561DE549D940E0),600), ((15201098976,CC0710CC94ECC657A8561DE549D940E0),1900), ((15201098976,9F36407EAD0629FC166F14DDE7970F68),54000), ((13331178849,16030401EAFB68F1E3CDF819735E1C66),87600), ((18611132889,16030401EAFB68F1E3CDF819735E1C66),97500))
+
+    val rdd2 = rdd1.map(t => {
+      //拆分出基站
+      val mobile = t._1._1
+      val lac = t._1._2
+      val time = t._2
+      (lac, (mobile, time))
     })
 
     println("rdd2 = " + rdd2.collect().toBuffer) //rdd2 = ArrayBuffer((16030401EAFB68F1E3CDF819735E1C66,(15201098976,97500)), (16030401EAFB68F1E3CDF819735E1C66,(18688888888,87600)), (CC0710CC94ECC657A8561DE549D940E0,(13331178849,600)), (CC0710CC94ECC657A8561DE549D940E0,(15201098976,1900)), (9F36407EAD0629FC166F14DDE7970F68,(15201098976,54000)), (16030401EAFB68F1E3CDF819735E1C66,(13331178849,87600)), (16030401EAFB68F1E3CDF819735E1C66,(18611132889,97500)))
 
     //将基站与经纬度join
-    val rdd3 = sc.textFile("c:/loc_info.txt").map(m=>{
-      val fileds= m.split(",")
+    val rdd3 = sc.textFile("c:/loc_info.txt").map(m => {
+      val fileds = m.split(",")
       val lac = fileds(0)
       val x = fileds(1)
-      val y =  fileds(2)
+      val y = fileds(2)
       val area = fileds(3)
-      (lac,(x,y))
+      (lac, (x, y))
     })
-    println("rdd3.collect().toBuffer = " + rdd3.collect().toBuffer)//rdd3.collect().toBuffer = ArrayBuffer((9F36407EAD0629FC166F14DDE7970F68,(116.304864,40.050645)), (CC0710CC94ECC657A8561DE549D940E0,(116.303955,40.041935)), (16030401EAFB68F1E3CDF819735E1C66,(116.296302,40.032296)))
+    println("rdd3.collect().toBuffer = " + rdd3.collect().toBuffer) //rdd3.collect().toBuffer = ArrayBuffer((9F36407EAD0629FC166F14DDE7970F68,(116.304864,40.050645)), (CC0710CC94ECC657A8561DE549D940E0,(116.303955,40.041935)), (16030401EAFB68F1E3CDF819735E1C66,(116.296302,40.032296)))
 
-    //
+    /*val rdd4 = rdd2.join(rdd3)
+    println("rdd4.collect().toBuffer = " + rdd4.collect().toBuffer)*/
 
+    val rdd4 = rdd2.join(rdd3).map(t => {
+      val lac = t._1
+      val mobile = t._2._1._1
+      val time = t._2._1._2
+      val x = t._2._2._1
+      val y = t._2._2._2
+      (mobile, lac, time, x, y)
+    })
+
+    println("rdd4 = " + rdd4.collect().toBuffer) //rdd4 = ArrayBuffer((13331178849,CC0710CC94ECC657A8561DE549D940E0,600,116.303955,40.041935), (15201098976,CC0710CC94ECC657A8561DE549D940E0,1900,116.303955,40.041935), (15201098976,16030401EAFB68F1E3CDF819735E1C66,97500,116.296302,40.032296), (18688888888,16030401EAFB68F1E3CDF819735E1C66,87600,116.296302,40.032296), (13331178849,16030401EAFB68F1E3CDF819735E1C66,87600,116.296302,40.032296), (18611132889,16030401EAFB68F1E3CDF819735E1C66,97500,116.296302,40.032296), (15201098976,9F36407EAD0629FC166F14DDE7970F68,54000,116.304864,40.050645))
+
+    val rdd5 = rdd4.groupBy(_._1)
+    println("lst = " + rdd5.collect().toBuffer)
+
+    val rdd6 = rdd5.mapValues(it=>{ //mapvalues后是iterator
+      it.toList.sortBy(_._3).reverse.take(2)
+    })
+
+    println("rdd6.collect().toBuffer) = " + rdd6.collect().toBuffer)
+
+    rdd6.saveAsTextFile("c:/out25")
+    sc.stop()
   }
 }
