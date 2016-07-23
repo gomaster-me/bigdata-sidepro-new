@@ -13,7 +13,7 @@ object UserLocation {
 
     //    sc.textFile("c:/1.log)").map(_.split(",")).map(x=>(x(0),x(1),x(2),x(3)))
     val rdd1 = sc.textFile("c:\\userLocation").map(line => {
-      //一定要记住这里是读取目录,且注意数据源头的格式..很坑的 最好统一为unix系统格式
+      //注意数据源头的格式..很坑的 最好统一为unix系统格式
       val fileds = line.split(",")
       val phoneNo = fileds(0)
       val time = fileds(1)
