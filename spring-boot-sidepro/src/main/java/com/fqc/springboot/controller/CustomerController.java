@@ -4,6 +4,7 @@ import com.fqc.springboot.model.Customer;
 import com.fqc.springboot.model.SimpleCustomer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,7 +16,8 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/customers")
-@EnableAutoConfiguration
+//@EnableAutoConfiguration
+@SpringBootApplication//内部实现包含了EnableAutoConfiguration
 public class CustomerController {
     public static final ArrayList<Customer> customerList = new ArrayList<>();
 
