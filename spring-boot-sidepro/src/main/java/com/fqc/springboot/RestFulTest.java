@@ -1,5 +1,6 @@
 package com.fqc.springboot;
 
+import com.fqc.springboot.controller.CustomerController;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.*;
@@ -43,6 +44,6 @@ public class RestfulTest {
     //endregion 参数提交测试结束--------------------------------------------------------------------
 
     public static void main(String[] args) {
-        SpringApplication.run(RestfulTest.class, args);
+        SpringApplication.run(new Object[]{RestfulTest.class, CustomerController.class}, args);
     }
 }

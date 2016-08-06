@@ -16,8 +16,8 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/customers")
-//@EnableAutoConfiguration
-@SpringBootApplication//内部实现包含了EnableAutoConfiguration
+@EnableAutoConfiguration
+//@SpringBootApplication//内部实现包含了EnableAutoConfiguration
 public class CustomerController {
     public static final ArrayList<Customer> customerList = new ArrayList<>();
 
