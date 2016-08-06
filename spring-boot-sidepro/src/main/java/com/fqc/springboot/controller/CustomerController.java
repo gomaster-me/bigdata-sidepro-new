@@ -1,5 +1,6 @@
 package com.fqc.springboot.controller;
 
+import com.fqc.springboot.exception.CustomerNotFoundException;
 import com.fqc.springboot.model.Customer;
 import com.fqc.springboot.model.SimpleCustomer;
 import org.springframework.boot.SpringApplication;
@@ -43,7 +44,7 @@ public class CustomerController {
         if (customer == null) { //注意在内存中删除后，再执行该方法会奏效~
             //以后可以对象统一消息，封装信息
             //return "not found"; 或者 throw new Exception
-            return null;//暂时处理
+            throw new CustomerNotFoundException();
         }
 
         return customer;
