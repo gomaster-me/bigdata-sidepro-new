@@ -49,7 +49,7 @@ public class CustomerController {
 
         return customer;
     }
-
+    //这里使用是为了测试name id该种传值方式,生产中禁止增加使用get方法
     @RequestMapping(value = "/add/{name}/{id}", method = RequestMethod.GET) //为了模拟，id这里手动传一下。// TODO: 2016/7/10
     public String add(@PathVariable String name, @PathVariable Integer id) {
         Customer customer = null;
@@ -78,6 +78,7 @@ public class CustomerController {
             }
         }
         customer = new Customer();
+        customer.setName(name);
         customer.setId(Long.parseLong(id.toString()));
         customerList.add(customer);
         message = "增加ok";

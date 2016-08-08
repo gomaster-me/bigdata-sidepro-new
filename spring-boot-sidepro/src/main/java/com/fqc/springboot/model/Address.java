@@ -1,5 +1,7 @@
 package com.fqc.springboot.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * Created by fqc on 2016/7/9.
  */
@@ -33,6 +35,7 @@ public class Address {
         this.state = state;
     }
 
+    @JsonIgnore
     public String getPin() {
         return pin;
     }
