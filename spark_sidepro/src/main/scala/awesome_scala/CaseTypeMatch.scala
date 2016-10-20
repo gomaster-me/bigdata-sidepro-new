@@ -8,14 +8,16 @@ import scala.util.Random
   */
 object CaseTypeMatch {
   def main(args: Array[String]) {
-    val arr = Array(1, "a", CaseTypeMatch)
+    val arr = Array(1, "a", -2.0, 1.0, CaseTypeMatch)
     val idx = Random.nextInt(arr.length)
     val av = arr(idx)
     println(av)
-    av match {//类型的转换指定，否则统一为Any类型
+    av match {
+      //类型的转换指定，否则统一为Any类型
       case av: Int => println(s"int:$av")
       case av: String => println(s"string:$av")
-      case _ => println(s"case:$av")
+      case av: Double if (av > 0) => println(s"double:$av")
+      case _ => println(throw new Exception("not found exception"))//-2.0 CaseTypeMatch
       /*case Int => println(s"int:$av")
       case String => println(s"string:$av")
       case => println(s"case:$av")
