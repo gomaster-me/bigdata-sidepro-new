@@ -1,14 +1,14 @@
 package com.fqc.springboot;
 
+import com.fqc.springboot.controller.CustomerController;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/rest-api")
 @EnableAutoConfiguration
-public class RestFulTest {
+public class RestfulTest {
 
     @RequestMapping(value = {"/index", ""})
     public String home() {
@@ -44,6 +44,6 @@ public class RestFulTest {
     //endregion 参数提交测试结束--------------------------------------------------------------------
 
     public static void main(String[] args) {
-        SpringApplication.run(RestFulTest.class, args);
+        SpringApplication.run(new Object[]{RestfulTest.class, CustomerController.class}, args);
     }
 }

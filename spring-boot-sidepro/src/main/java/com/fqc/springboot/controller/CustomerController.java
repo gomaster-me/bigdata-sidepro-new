@@ -1,9 +1,11 @@
 package com.fqc.springboot.controller;
 
+import com.fqc.springboot.exception.CustomerNotFoundException;
 import com.fqc.springboot.model.Customer;
 import com.fqc.springboot.model.SimpleCustomer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,6 +18,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/customers")
 @EnableAutoConfiguration
+//@SpringBootApplication//内部实现包含了EnableAutoConfiguration
 public class CustomerController {
     public static final ArrayList<Customer> customerList = new ArrayList<>();
 
@@ -41,12 +44,12 @@ public class CustomerController {
         if (customer == null) { //注意在内存中删除后，再执行该方法会奏效~
             //以后可以对象统一消息，封装信息
             //return "not found"; 或者 throw new Exception
-            return null;//暂时处理
+            throw new CustomerNotFoundException();
         }
 
         return customer;
     }
-
+    //这里使用是为了测试name id该种传值方式,生产中禁止增加使用get方法
     @RequestMapping(value = "/add/{name}/{id}", method = RequestMethod.GET) //为了模拟，id这里手动传一下。// TODO: 2016/7/10
     public String add(@PathVariable String name, @PathVariable Integer id) {
         Customer customer = null;
@@ -75,6 +78,7 @@ public class CustomerController {
             }
         }
         customer = new Customer();
+        customer.setName(name);
         customer.setId(Long.parseLong(id.toString()));
         customerList.add(customer);
         message = "增加ok";

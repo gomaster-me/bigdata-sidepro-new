@@ -1,5 +1,7 @@
 package com.fqc.springboot.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * Created by fqc on 2016/7/9.
  */
@@ -33,7 +35,6 @@ public class Customer {
     public void setName(String name) {
         this.name = name;
     }
-
 
     public Address getAddress() {
         return address;
