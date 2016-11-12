@@ -1,4 +1,4 @@
-package com.fqc.springboot.model;
+package com.fqc.springboot.demo01.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 

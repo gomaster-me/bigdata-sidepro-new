@@ -1,6 +1,6 @@
-package com.fqc.springboot;
+package com.fqc.springboot.demo01;
 
-import com.fqc.springboot.controller.CustomerController;
+import com.fqc.springboot.demo01.controller.CustomerController;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.*;

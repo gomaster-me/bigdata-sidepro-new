@@ -1,4 +1,4 @@
-package com.fqc.springboot.model;
+package com.fqc.springboot.demo01.model;
 
 /**
  * Created by fqc on 2016/7/11.
