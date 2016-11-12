@@ -2,6 +2,7 @@ package com.fqc.springboot.demo03;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,6 +15,7 @@ import java.util.Map;
 @RestController
 @EnableAutoConfiguration
 @RequestMapping("/property")
+//@Profile("test") 只有在配置spring.profiles.active为test生效
 public class PropertyController {
 
     @Value("${app.name}")
