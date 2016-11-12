@@ -2,9 +2,7 @@ package com.fqc.springboot.demo01;
 
 import com.fqc.springboot.demo01.controller.CustomerController;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.bind.annotation.RestController;
 
 /**
  * Created by fqc on 8/6/16.
