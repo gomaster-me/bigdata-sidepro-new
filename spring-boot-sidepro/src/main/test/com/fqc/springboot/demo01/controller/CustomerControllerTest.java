@@ -1,14 +1,12 @@
-package com.fqc.springboot.controller;
+package com.fqc.springboot.demo01.controller;
 
-import com.fqc.springboot.model.Customer;
+import com.fqc.springboot.demo01.model.Customer;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by fqc on 2016/7/12.
