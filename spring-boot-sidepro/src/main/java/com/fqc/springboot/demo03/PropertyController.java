@@ -22,11 +22,21 @@ public class PropertyController {
     @Value("${app.code}")
     private String appCode;
 
+    @Value("${app.secret}")
+    private String random;
+
+    @Value("${app.number}")
+    private String randomInt;
+    @Value("${app.desc}")
+    private String desc;
     @RequestMapping("find")
     public Map<String, String> find() {
         Map<String, String> map = new HashMap<>();
         map.put("appName", appName);
         map.put("appCode", appCode);
+        map.put("secret", random);
+        map.put("number", randomInt);
+        map.put("app.desc", desc);
         return map;
     }
 }
