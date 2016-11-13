@@ -1,6 +1,5 @@
 package com.fqc.springboot.demo06;
 
-import com.fqc.springboot.demo05.BeanConfigController;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -14,6 +13,6 @@ public class App {
 //        SpringApplication.run(new Object[]{BeanConfigController.class,
 //                DemoContorller.class, DemoService.class, DemoRepository.class}, args);
 
-        SpringApplication.run(new Object[]{App.class,BeanConfigController.class}, args);
+        SpringApplication.run(App.class, args);
     }
 }
