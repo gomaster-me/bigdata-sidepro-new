@@ -1,9 +1,8 @@
 package com.fqc.springboot.demo06;
 
 import org.springframework.data.repository.PagingAndSortingRepository;
-import org.springframework.stereotype.Repository;
 
 //@EnableAutoConfiguration
-@Repository
+//@Repository 不加也可以的
 public interface DemoRepository extends PagingAndSortingRepository<Demo, Long> {
 }

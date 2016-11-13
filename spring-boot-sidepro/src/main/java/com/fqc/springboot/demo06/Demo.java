@@ -9,7 +9,6 @@ import javax.persistence.Id;
 import java.io.Serializable;
 import java.util.Date;
 
-@EnableAutoConfiguration
 @Entity
 public class Demo implements Serializable {
     private static final long serialVersionUID = 2829011618483752235L;

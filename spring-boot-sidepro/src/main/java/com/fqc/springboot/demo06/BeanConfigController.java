@@ -23,7 +23,6 @@ import java.text.SimpleDateFormat;
  * Created by fqc on 11/13/16.
  */
 @RestController
-@EnableAutoConfiguration
 public class BeanConfigController {
 
     @Value("${characterEncoding}")
