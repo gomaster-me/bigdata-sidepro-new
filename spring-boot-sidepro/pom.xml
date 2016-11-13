@@ -168,6 +168,8 @@
         </dependency>
 
         <!--监控-->
+        <!--ssh -p 2000 user@localhost-->
+        <!--Using default password for shell access: 57946cf9-22a1-4415-a87e-36c38801c502-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
