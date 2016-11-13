@@ -1,12 +1,13 @@
 package com.fqc.springboot.demo03;
 
 import org.joda.time.DateTime;
-import org.springframework.beans.factory.ObjectFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -40,7 +41,9 @@ public class PropertyController {
         map.put("secret", random);
         map.put("number", randomInt);
         map.put("app.desc", desc);
-        map.put("date", new DateTime().toString());
+        map.put("date1", new DateTime().toString());
+        map.put("date2", new Date());
+        map.put("date3", LocalDateTime.now());
         return map;
     }
 }
