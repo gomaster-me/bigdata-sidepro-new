@@ -11,24 +11,20 @@
     <name>cloud-config-server</name>
     <description>project for spring cloud config</description>
 
-    <parent>
-        <!--<groupId>org.springframework.boot</groupId>-->
-        <!--<artifactId>spring-boot-starter-parent</artifactId>-->
-        <!--&lt;!&ndash;<version>1.3.6.RELEASE</version>&ndash;&gt;-->
-        <!--<version>1.4.0.RELEASE</version>-->
-        <relativePath/> <!-- lookup parent from repository -->
 
-        <!--spring cloud parent version-->
+
+    <parent>
         <groupId>org.springframework.cloud</groupId>
         <artifactId>spring-cloud-starter-parent</artifactId>
-        <version>Angel.SR3</version>
-
+        <version>Brixton.BUILD-SNAPSHOT</version>
+        <relativePath /> <!-- lookup parent from repository -->
     </parent>
+
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <!--<start-class>com.fqc.springboot.demo02.Application</start-class>-->
-        <start-class></start-class>
+        <start-class>com.fqc.bigdata.cloud.config.ConfigServerApplication</start-class>
         <java.version>1.8</java.version>
     </properties>
 
@@ -105,68 +101,25 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <dependency><!---->
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <version>RELEASE</version>
+
+        <!--spring cloud config server-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-config-server</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-loader-tools</artifactId>
-            <version>1.4.0.RELEASE</version>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-eureka</artifactId>
         </dependency>
 
-
+        <!--config server need read svn-->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-jdbc</artifactId>
+            <groupId>org.tmatesoft.svnkit</groupId>
+            <artifactId>svnkit</artifactId>
+            <version>1.8.10</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-envers</artifactId>
-            <version>1.0.4.RELEASE</version>
-        </dependency>
-
-        <!-- Hibernate -->
-        <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-envers -->
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-envers</artifactId>
-            <version>5.1.1.Final</version>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.6</version>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/com.oracle/ojdbc14 -->
-        <dependency>
-            <groupId>com.oracle</groupId>
-            <artifactId>ojdbc14</artifactId>
-            <version>10.2.0.4.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <scope>runtime</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>druid</artifactId>
-            <version>1.0.24</version>
-        </dependency>
 
         <!--监控-->
         <!--ssh -p 2000 user@localhost-->
@@ -188,11 +141,6 @@
             <version>4.12</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-annotations</artifactId>
-            <version>2.4.4</version>
-        </dependency>
 
 
         <!--<dependency>-->
@@ -201,17 +149,7 @@
         <!--<version>1.1.1</version>-->
         <!--</dependency>-->
 
-        <!--spring cloud config server-->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-config-server</artifactId>
-        </dependency>
-        <!--config server need read svn-->
-        <dependency>
-            <groupId>org.tmatesoft.svnkit</groupId>
-            <artifactId>svnkit</artifactId>
-            <version>1.8.10</version>
-        </dependency>
+
 
     </dependencies>
 
