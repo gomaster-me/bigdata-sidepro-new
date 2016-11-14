@@ -1,5 +1,6 @@
-package com.fqc.springboot.demo03;
+package com.fqc.springboot.demo04;
 
+import com.fqc.springboot.demo03.PropertyController;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -9,6 +10,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class App {
     public static void main(String[] args) {
-        SpringApplication.run(App.class,args);
+        SpringApplication.run(DemoController.class,args);
     }
 }
