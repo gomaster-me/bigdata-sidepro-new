@@ -1,69 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.fqc.bigdata</groupId>
+    <groupId>cloud</groupId>
     <artifactId>cloud-config-server</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-
-    <name>cloud-config-server</name>
-    <description>project for spring cloud config</description>
+    <version>0.0.1</version>
+    <packaging>jar</packaging>
 
 
+    <name>cloud-config-serve</name>
+    <description>cloud-config-server</description>
 
     <parent>
         <groupId>org.springframework.cloud</groupId>
         <artifactId>spring-cloud-starter-parent</artifactId>
-        <version>Brixton.BUILD-SNAPSHOT</version>
+        <version>Brixton.RELEASE</version>
         <relativePath /> <!-- lookup parent from repository -->
     </parent>
 
-
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <!--<start-class>com.fqc.springboot.demo02.Application</start-class>-->
-        <start-class>cloud.config.server.ConfigServerApplication</start-class>
         <java.version>1.8</java.version>
     </properties>
 
-    <!-- 设定除中央仓库(repo1.maven.org/maven2/)外的其他仓库,按设定顺序进行查找. -->
-    <repositories>
 
+
+
+    <repositories>
         <repository>
             <id>alimaven</id>
             <name>aliyun maven</name>
             <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
         </repository>
-
-        <repository>
-            <id>offical</id>
-            <name>Maven Official Repository</name>
-            <url>http://repo1.maven.org/maven2</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-
-        <repository>
-            <id>jboss</id>
-            <name>Jboss Repository</name>
-            <url>http://repository.jboss.org/nexus/content/groups/public-jboss/</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-
-        <repository>
-            <id>java.net</id>
-            <name>Java.net Repository</name>
-            <url>http://download.java.net/maven/2/</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-
 
         <repository>
             <id>spring-snapshots</id>
@@ -89,46 +58,11 @@
                 <enabled>false</enabled>
             </snapshots>
         </repository>
-
-        <repository>
-            <id>spring-libs-snapshot</id>
-            <url>https://repo.spring.io/libs-snapshot</url>
-        </repository>
-
-        <repository>
-            <id>org.springframework.maven.milestone</id>
-            <name>Spring Framework Maven Milestone Repository</name>
-            <url>http://maven.springframework.org/milestone</url>
-        </repository>
-
-        <repository>
-            <id>druid</id>
-            <name>ali druid repo</name>
-            <url>http://repo1.maven.org/maven2/com/alibaba/druid</url>
-
-        </repository>
-        <repository>
-            <id>oschina</id>
-            <url>http://maven.oschina.net/content/groups/public/</url>
-        </repository>
-
     </repositories>
 
-
     <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-            <version>1.4.0.RELEASE</version>
-        </dependency>
-        <!-- Add typical dependencies for a web application -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
 
 
-        <!--spring cloud config server-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-config-server</artifactId>
@@ -136,51 +70,24 @@
 
         <dependency>
             <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-config</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-eureka</artifactId>
         </dependency>
 
-        <!--config server need read svn-->
         <dependency>
-            <groupId>org.tmatesoft.svnkit</groupId>
-            <artifactId>svnkit</artifactId>
-            <version>1.8.10</version>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-eureka-server</artifactId>
         </dependency>
-
-
-        <!--监控-->
-        <!--ssh -p 2000 user@localhost-->
-        <!--Using default password for shell access: 57946cf9-22a1-4415-a87e-36c38801c502-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
-
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-remote-shell</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
+            <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-
-
-        <!--<dependency>-->
-        <!--<groupId>org.mybatis.spring.boot</groupId>-->
-        <!--<artifactId>mybatis-spring-boot-starter</artifactId>-->
-        <!--<version>1.1.1</version>-->
-        <!--</dependency>-->
-
-
-
     </dependencies>
 
-
-    <!-- Package as an executable jar -->
     <build>
         <plugins>
             <plugin>
@@ -188,8 +95,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
+        <defaultGoal>compile</defaultGoal>
     </build>
 
-
 </project>
-
