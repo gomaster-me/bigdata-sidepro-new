@@ -24,7 +24,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <!--<start-class>com.fqc.springboot.demo02.Application</start-class>-->
-        <start-class>com.fqc.bigdata.cloud.config.ConfigServerApplication</start-class>
+        <start-class>cloud.config.server.ConfigServerApplication</start-class>
         <java.version>1.8</java.version>
     </properties>
 
