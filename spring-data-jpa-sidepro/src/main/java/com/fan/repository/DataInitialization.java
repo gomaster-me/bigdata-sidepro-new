@@ -28,4 +28,11 @@ public class DataInitialization implements CommandLineRunner {
         users.forEach(System.out::println);
 
     }
+
+    public List<User> helloWorld() {
+        userRepository.save(new User("HelloWorld", "HelloWorld@tianmaying.com"));
+        List<User> users = userRepository.findAll();
+        users.forEach(System.out::println);
+        return users;
+    }
 }

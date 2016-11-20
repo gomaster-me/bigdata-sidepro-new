@@ -22,16 +22,40 @@ public class User {
         this.email = email;
     }
 
-    @Override
-    public String toString() {
-        return String.format(
-                "User[id=%d, name='%s', email='%s']",
-                id, name, email);
-    }
+//    @Override
+//    public String toString() {
+//        return String.format(
+//                "User[id=%d, name='%s', email='%s']",
+//                id, name, email);
+//    }
 
     public static void main(String[] args) {
         User kobe = new User("kobe", "eee.com");
         System.out.println(kobe);
     }
 
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 }
