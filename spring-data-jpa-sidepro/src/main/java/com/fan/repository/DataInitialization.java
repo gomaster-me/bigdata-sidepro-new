@@ -1,6 +1,6 @@
 package com.fan.repository;
 
-import com.fan.domain.User;
+import com.fan.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -32,6 +32,13 @@ public class DataInitialization implements CommandLineRunner {
     public List<User> helloWorld() {
         userRepository.save(new User("HelloWorld", "HelloWorld@tianmaying.com"));
         List<User> users = userRepository.findAll();
+        users.forEach(System.out::println);
+        return users;
+    }
+
+
+    public List<User> findByName(String name) {
+        List<User> users = userRepository.findByName(name);
         users.forEach(System.out::println);
         return users;
     }

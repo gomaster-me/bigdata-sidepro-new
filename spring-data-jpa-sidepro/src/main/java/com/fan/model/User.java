@@ -1,4 +1,4 @@
-package com.fan.domain;
+package com.fan.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
