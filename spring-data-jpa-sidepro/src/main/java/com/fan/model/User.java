@@ -22,12 +22,12 @@ public class User {
         this.email = email;
     }
 
-//    @Override
-//    public String toString() {
-//        return String.format(
-//                "User[id=%d, name='%s', email='%s']",
-//                id, name, email);
-//    }
+    @Override
+    public String toString() {
+        return String.format(
+                "User[id=%d, name='%s', email='%s']",
+                id, name, email);
+    }
 
     public static void main(String[] args) {
         User kobe = new User("kobe", "eee.com");

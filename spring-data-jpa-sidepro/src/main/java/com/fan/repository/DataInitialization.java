@@ -24,7 +24,7 @@ public class DataInitialization implements CommandLineRunner {
         userRepository.save(new User("kobe05", "baidu05.com"));
 
         List<User> users = userRepository.findAll();
-        users.forEach(user -> System.out.println(user));
+       // users.forEach(user -> System.out.println(user));
         users.forEach(System.out::println);
 
     }
