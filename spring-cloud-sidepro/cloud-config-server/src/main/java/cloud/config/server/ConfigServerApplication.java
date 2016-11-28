@@ -9,8 +9,6 @@ import org.springframework.cloud.config.server.EnableConfigServer;
 //@EnableAutoConfiguration
 //@EnableDiscoveryClient
 //@SpringBootApplication
-//@EnableConfigServer//读取远程配置文件，转换为rest接口服务
-
 @SpringBootApplication
 @EnableConfigServer//读取远程配置文件，转换为rest接口服务
 public class ConfigServerApplication {

@@ -8,23 +8,20 @@
     <version>0.0.1</version>
     <packaging>jar</packaging>
 
-
     <name>cloud-config-serve</name>
     <description>cloud-config-server</description>
 
     <parent>
         <groupId>org.springframework.cloud</groupId>
         <artifactId>spring-cloud-starter-parent</artifactId>
-        <version>Brixton.RELEASE</version>
-        <relativePath /> <!-- lookup parent from repository -->
+        <version>Brixton.SR4</version>
+        <relativePath/>
     </parent>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
     </properties>
-
-
 
 
     <repositories>
@@ -60,6 +57,8 @@
         </repository>
     </repositories>
 
+
+
     <dependencies>
 
 
@@ -69,6 +68,12 @@
         </dependency>
 
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+       <!-- <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-config</artifactId>
         </dependency>
@@ -80,12 +85,8 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-eureka-server</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
+        </dependency>-->
+
     </dependencies>
 
     <build>

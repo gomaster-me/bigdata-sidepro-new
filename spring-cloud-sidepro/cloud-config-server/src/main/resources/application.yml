@@ -7,4 +7,6 @@ spring:
       server:
         git:
           uri: https://github.com/fqc/cloud-config-repo
-          searchPaths: config
+          search-paths: config
+#          uri: https://github.com/fqc/bigdata_sidepro_new
+#          searchPaths: spring-cloud-sidepro/cloud-config-repo/resources

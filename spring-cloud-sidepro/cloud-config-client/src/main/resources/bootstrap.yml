@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: cloud-config-client
+  cloud:
+    config:
+      uri:  http://localhost:8001
+  profiles:
+    active: beijing
+
+---
+server:
+  port: 8002
