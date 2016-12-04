@@ -24,8 +24,8 @@ public class UserController {
         return dataInitialization.helloWorld();
     }
 
-    @RequestMapping("findByName/{name}")
-    public List<User> findByName(@PathVariable String name) {
-        return dataInitialization.findByName(name);
-    }
+//    @RequestMapping("findByName/{name}")
+//    public List<User> findByName(@PathVariable String name) {
+//        return dataInitialization.findByName(name);
+//    }
 }

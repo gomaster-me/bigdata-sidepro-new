@@ -1,9 +1,6 @@
 package com.fan.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class User {
@@ -11,10 +8,45 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Column(unique = true)
     private String name;
+    private String address;
+    private String phone;
+    private VehicleIdentificationNumber vin;
+
+    public VehicleIdentificationNumber getVin() {
+        return vin;
+    }
+
+    public void setVin(VehicleIdentificationNumber vin) {
+        this.vin = vin;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
     private String email;
 
+
     protected User() {
+    }
+
+    public User(String name, VehicleIdentificationNumber vin) {
+        this.name = name;
+        this.vin = vin;
     }
 
     public User(String name, String email) {
@@ -25,8 +57,8 @@ public class User {
     @Override
     public String toString() {
         return String.format(
-                "User[id=%d, name='%s', email='%s']",
-                id, name, email);
+                "User[id=%d, name='%s', email='%s',address='%s',phone='phone']",
+                id, name, email,address,phone);
     }
 
     public static void main(String[] args) {

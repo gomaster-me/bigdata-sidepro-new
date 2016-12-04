@@ -36,10 +36,10 @@ public class DataInitialization implements CommandLineRunner {
         return users;
     }
 
-
-    public List<User> findByName(String name) {
-        List<User> users = userRepository.findByName(name);
-        users.forEach(System.out::println);
-        return users;
-    }
+//
+//    public List<User> findByName(String name) {
+//        List<User> users = userRepository.findByName(name);
+//        users.forEach(System.out::println);
+//        return users;
+//    }
 }
