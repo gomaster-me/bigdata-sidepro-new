@@ -24,46 +24,48 @@ public class UserServiceImplTest {
 
     @Test
     public void addUser() throws Exception {
+        System.out.println("add......");
         User zhangsan = new User("zhangsan", "zhangsan@google.com");
         userService.addUser(zhangsan);
         List<User> users = userService.findUsers();
         users.forEach(System.out::println);
-
     }
 
     @Test
     public void updateUser() throws Exception {
-        User zhangsan = new User("zhangsan", "zhangsan@google.com");
+        System.out.println("update.......");
         User zhangsan1 = userService.findUserByName("zhangsan");
+        zhangsan1.setEmail("baidu-google.com");
         User user = userService.updateUser(zhangsan1);
         System.out.println(user.getEmail());
-
-
     }
 
     @Test
     public void deleteUser() throws Exception {
+        System.out.println("delete..........");
         User zhangsan = userService.findUserByName("zhangsan");
-
         userService.deleteUser(zhangsan.getId());
+        userService.findUsers().forEach(System.out::println);
     }
 
     @Test
     public void findUser() throws Exception {
+        System.out.println("findUser......");
         User user = userService.findUser(5L);
         System.out.println(user);
     }
 
     @Test
     public void findUsers() throws Exception {
+        System.out.println("findAll........");
         List<User> users = userService.findUsers();
         users.forEach(System.out::println);
     }
 
     @Test
     public void findUserByName() throws Exception {
+        System.out.println("findByName.....");
         User zhangsan = userService.findUserByName("zhangsan");
-
         System.out.println(zhangsan.getName());
     }
 
