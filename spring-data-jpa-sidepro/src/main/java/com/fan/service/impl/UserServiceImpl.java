@@ -31,21 +31,26 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User deleteUser(int id) throws UserNotFound {
+    public User deleteUser(Long id) throws UserNotFound {
         User userDelete = userRepository.findOne(id);
-        if (userDelete != null) throw new UserNotFound();
+        if (userDelete == null) throw new UserNotFound();
         userRepository.delete(id);
         return userDelete;
 
     }
 
     @Override
-    public User findUser(int id) {
+    public User findUser(Long id) {
         return userRepository.findOne(id);
     }
 
     @Override
     public List<User> findUsers() {
         return userRepository.findAll();
+    }
+
+    @Override
+    public User findUserByName(String name) {
+        return userRepository.findByName(name);
     }
 }

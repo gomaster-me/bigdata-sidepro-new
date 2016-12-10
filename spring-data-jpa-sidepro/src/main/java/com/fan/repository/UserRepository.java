@@ -12,7 +12,7 @@ import java.util.List;
  * Created by fqc on 11/20/16.
  */
 @RepositoryRestResource
-public interface UserRepository extends JpaRepository<User, Integer> {
+public interface UserRepository extends JpaRepository<User, Long> {
     //List<User> findByName(String username);
 
     //    User findByUserName(String name);

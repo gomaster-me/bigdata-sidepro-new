@@ -17,11 +17,11 @@ public class DataInitialization implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        userRepository.save(new User("kobe01", "baidu.com"));
-        userRepository.save(new User("kobe02", "baidu02.com"));
-        userRepository.save(new User("kobe03", "baidu03.com"));
-        userRepository.save(new User("kobe04", "baidu04.com"));
-        userRepository.save(new User("kobe05", "baidu05.com"));
+//        userRepository.save(new User("kobe01", "baidu.com"));
+//        userRepository.save(new User("kobe02", "baidu02.com"));
+//        userRepository.save(new User("kobe03", "baidu03.com"));
+//        userRepository.save(new User("kobe04", "baidu04.com"));
+//        userRepository.save(new User("kobe05", "baidu05.com"));
 
         List<User> users = userRepository.findAll();
        // users.forEach(user -> System.out.println(user));

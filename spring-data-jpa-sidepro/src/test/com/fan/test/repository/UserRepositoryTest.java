@@ -3,6 +3,8 @@ package com.fan.test.repository;
 import com.fan.model.User;
 import com.fan.model.VehicleIdentificationNumber;
 import com.fan.repository.UserRepository;
+import com.fan.service.UserService;
+import com.fan.service.impl.UserServiceImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,10 +28,14 @@ public class UserRepositoryTest {
     @Autowired
     private UserRepository userRepository;
 
-    @Test
+//    @Autowired
+//    private UserService userService;
+
+    /*@Test
     public void findUserByNameShouldReturnUser() {
         this.testEntityManager.persist(new User("kobe", VIN));
         User kobe = userRepository.findByName("kobe");
+        //User kobe = userService.findUserByName("kobe");
         assertThat(kobe.getName().equals("kobe"));
         assertThat(kobe.getVin()).isEqualTo(VIN);
     }
@@ -39,5 +45,5 @@ public class UserRepositoryTest {
         this.testEntityManager.persist(new User("james", VIN));
         User user = userRepository.findByName("james2");
         assertThat(user).isNull();
-    }
+    }*/
 }
