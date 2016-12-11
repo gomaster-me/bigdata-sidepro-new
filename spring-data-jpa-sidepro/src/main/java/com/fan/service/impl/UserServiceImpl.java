@@ -5,6 +5,9 @@ import com.fan.model.User;
 import com.fan.repository.UserRepository;
 import com.fan.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,6 +24,23 @@ public class UserServiceImpl implements UserService {
     @Override
     public void addUser(User user) {
         userRepository.save(user);
+    }
+
+    @Override
+    public List<User> findTop2ByPhoneStartingWithAndAddressContainingOrderByIdDesc(String phone, String address) {
+        return userRepository.findTop2ByPhoneStartingWithAndAddressContainingOrderByIdDesc(phone, address);
+    }
+
+    @Override
+    public List<User> findByPhoneStartingWithAndAddressContainingNoPage(String phone, String address, Sort sort) {
+        List<User> users = userRepository.findByPhoneStartingWithAndAddressContaining(phone, address, sort);
+        return users;
+    }
+
+    @Override
+    public Page<User> getUsersByConditionsWithPage(String phone, String address, Integer pageNo, Integer pageSize) {
+        Page<User> userPages = userRepository.findByPhoneStartingWithAndAddressContaining(phone, address, new PageRequest(pageNo, pageSize));
+        return userPages;
     }
 
     @Override
