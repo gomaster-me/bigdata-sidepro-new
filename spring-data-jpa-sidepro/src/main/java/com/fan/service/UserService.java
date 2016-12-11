@@ -2,7 +2,9 @@ package com.fan.service;
 
 import com.fan.exception.UserNotFound;
 import com.fan.model.User;
-import org.springframework.stereotype.Service;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 
 import java.util.List;
 
@@ -10,13 +12,21 @@ import java.util.List;
  * Created by fqc on 12/3/16.
  */
 public interface UserService {
-    public void addUser(User user);
+    void addUser(User user);
 
-    public User updateUser(User user) throws UserNotFound;
+    User updateUser(User user) throws UserNotFound;
 
-    public User deleteUser(int id) throws UserNotFound;
+    User deleteUser(Long id) throws UserNotFound;
 
-    public User findUser(int id);
+    User findUser(Long id);
 
-    public List<User> findUsers();
+    List<User> findUsers();
+
+    User findUserByName(String name);
+
+    List<User> findTop2ByPhoneStartingWithAndAddressContainingOrderByIdDesc(String phone, String address);
+
+    List<User> findByPhoneStartingWithAndAddressContainingNoPage(String phone, String address, Sort sort);
+
+    Page<User> getUsersByConditionsWithPage(String phone, String address, Integer pageNo, Integer pageSize);
 }

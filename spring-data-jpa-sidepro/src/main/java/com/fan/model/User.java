@@ -3,6 +3,7 @@ package com.fan.model;
 import javax.persistence.*;
 
 @Entity
+@Table(name="user")
 public class User {
 
     @Id
@@ -12,15 +13,15 @@ public class User {
     private String name;
     private String address;
     private String phone;
-    private VehicleIdentificationNumber vin;
+//    private VehicleIdentificationNumber vin;
 
-    public VehicleIdentificationNumber getVin() {
-        return vin;
-    }
+//    public VehicleIdentificationNumber getVin() {
+//        return vin;
+//    }
 
-    public void setVin(VehicleIdentificationNumber vin) {
-        this.vin = vin;
-    }
+//    public void setVin(VehicleIdentificationNumber vin) {
+//        this.vin = vin;
+//    }
 
     public String getAddress() {
         return address;
@@ -44,10 +45,10 @@ public class User {
     protected User() {
     }
 
-    public User(String name, VehicleIdentificationNumber vin) {
-        this.name = name;
-        this.vin = vin;
-    }
+//    public User(String name, VehicleIdentificationNumber vin) {
+//        this.name = name;
+//        this.vin = vin;
+//    }
 
     public User(String name, String email) {
         this.name = name;
@@ -57,7 +58,7 @@ public class User {
     @Override
     public String toString() {
         return String.format(
-                "User[id=%d, name='%s', email='%s',address='%s',phone='phone']",
+                "User[id=%d, name='%s', email='%s',address='%s',phone='%s']",
                 id, name, email,address,phone);
     }
 
