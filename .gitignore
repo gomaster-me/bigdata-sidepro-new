@@ -19,3 +19,5 @@ target/
 node_modules/
 typings/
 npm_debug.log
+*/*.project
+*.project
