@@ -3,8 +3,15 @@ package com.fqc;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
+import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.index.IndexWriter;
 import org.apache.lucene.index.IndexWriterConfig;
+import org.apache.lucene.queryParser.ParseException;
+import org.apache.lucene.queryParser.QueryParser;
+import org.apache.lucene.search.IndexSearcher;
+import org.apache.lucene.search.Query;
+import org.apache.lucene.search.ScoreDoc;
+import org.apache.lucene.search.TopDocs;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 import org.apache.lucene.util.Version;
@@ -47,4 +54,30 @@ public class HelloLucene {
 
     }
 
+    public void searcher(String filePath) {
+        IndexReader reader = null;
+        try {
+            QueryParser parser = new QueryParser(Version.LUCENE_35, "content", new StandardAnalyzer(Version.LUCENE_35));
+            Query query = parser.parse("fqc");
+
+            Directory dir = FSDirectory.open(new File(filePath));
+            reader = IndexReader.open(dir);
+            IndexSearcher searcher = new IndexSearcher(reader);
+            TopDocs tds = searcher.search(query, 10);
+            for (ScoreDoc scoreDoc : tds.scoreDocs) {
+                Document doc = searcher.doc(scoreDoc.doc);
+                System.out.println(doc.get("title") + "[" + doc.get("path") + "]");
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                reader.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }
