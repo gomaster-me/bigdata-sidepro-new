@@ -54,13 +54,13 @@ public class HelloLucene {
 
     }
 
-    public void searcher(String filePath) {
+    public void searcher(String indexPath, String searchKeyWord) {
         IndexReader reader = null;
         try {
             QueryParser parser = new QueryParser(Version.LUCENE_35, "content", new StandardAnalyzer(Version.LUCENE_35));
-            Query query = parser.parse("fqc");
+            Query query = parser.parse(searchKeyWord);
 
-            Directory dir = FSDirectory.open(new File(filePath));
+            Directory dir = FSDirectory.open(new File(indexPath));
             reader = IndexReader.open(dir);
             IndexSearcher searcher = new IndexSearcher(reader);
             TopDocs tds = searcher.search(query, 10);

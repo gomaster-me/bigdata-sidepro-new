@@ -22,6 +22,6 @@ public class HelloLuceneTest {
 
     @Test
     public void testSearcher() {
-        test.searcher("/usr/local/data/indexFiles");
+        test.searcher("/usr/local/data/indexFiles", "fqc");
     }
 }
