@@ -24,16 +24,17 @@ import java.io.IOException;
  * Created by fqc on 3/10/17.
  */
 public class HelloLucene {
-    public void indexFiles(String indexPath, String rawFilesPath) {
+    public void indexFiles(String indexPath, String directory) {
         IndexWriter writer = null;
         try {
-            File indexFiles = new File(indexPath);
-            Directory dir = FSDirectory.open(indexFiles);
+            File indexDir = new File(indexPath);
+            Directory fsDirectory = FSDirectory.open(indexDir);
             IndexWriterConfig conf = new IndexWriterConfig(Version.LUCENE_35, new StandardAnalyzer(Version.LUCENE_35));
-            writer = new IndexWriter(dir, conf);
+            writer = new IndexWriter(fsDirectory, conf);
+
             Document doc;
-            File raw_files = new File(rawFilesPath);
-            for (File file : raw_files.listFiles()) {
+            File dir = new File(directory);
+            for (File file : dir.listFiles()) {
                 doc = new Document();
                 doc.add(new Field("content", new FileReader(file)));
                 doc.add(new Field("title", file.getName(), Field.Store.YES, Field.Index.NOT_ANALYZED));
@@ -57,12 +58,13 @@ public class HelloLucene {
     public void searcher(String indexPath, String searchKeyWord) {
         IndexReader reader = null;
         try {
-            QueryParser parser = new QueryParser(Version.LUCENE_35, "content", new StandardAnalyzer(Version.LUCENE_35));
-            Query query = parser.parse(searchKeyWord);
-
             Directory dir = FSDirectory.open(new File(indexPath));
             reader = IndexReader.open(dir);
             IndexSearcher searcher = new IndexSearcher(reader);
+
+            QueryParser parser = new QueryParser(Version.LUCENE_35, "content", new StandardAnalyzer(Version.LUCENE_35));
+            Query query = parser.parse(searchKeyWord);
+
             TopDocs tds = searcher.search(query, 10);
             for (ScoreDoc scoreDoc : tds.scoreDocs) {
                 Document doc = searcher.doc(scoreDoc.doc);

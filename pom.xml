@@ -9,6 +9,7 @@
         <module>hadoop_sidepro</module>
         <module>spark_sidepro</module>
         <module>core-lucene</module>
+        <module>core-java</module>
     </modules>
     <packaging>pom</packaging>
 
