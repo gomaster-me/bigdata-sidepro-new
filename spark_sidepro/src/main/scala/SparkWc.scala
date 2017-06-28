@@ -7,12 +7,13 @@ import scala.collection.immutable.Range.Inclusive
   * Created by fqc on 2016/7/20.
   */
 object SparkWc {
-  /* def main(args: Array[String]) {
-     val conf: SparkConf = new SparkConf().setAppName("wc")//本地模拟
+   def main(args: Array[String]) {
+     val conf: SparkConf = new SparkConf().setMaster("local[2]").setAppName("wc")//本地模拟
      val sc: SparkContext = new SparkContext(conf)
+     println(args(0))
      sc.textFile(args(0)).flatMap(_.split(" ")).map((_, 1)).reduceByKey(_ + _, 1).sortBy(_._2).saveAsTextFile(args(1))
      sc.stop()
-   }*/
+   }
 }
 
 object Test {
