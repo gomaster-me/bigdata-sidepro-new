@@ -10,6 +10,7 @@
         <module>spark_sidepro</module>
         <module>core-lucene</module>
         <module>core-java</module>
+        <module>rpc-services</module>
     </modules>
     <packaging>pom</packaging>
 
