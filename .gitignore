@@ -22,3 +22,5 @@ npm_debug.log
 */.classpath
 */.settings
 */.project
+springbootdemo/.gradle/
+.gradle/
