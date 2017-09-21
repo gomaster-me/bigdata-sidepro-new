@@ -5,6 +5,7 @@
 
 # Package Files #
 *.jar
+!springbootdemo/build/libs/*.jar
 *.war
 *.ear
 
