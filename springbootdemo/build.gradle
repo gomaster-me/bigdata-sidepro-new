@@ -4,15 +4,23 @@ buildscript {
 		springBootVersion = '1.5.7.RELEASE'
 	}
 
+	/**
+	 * Repositories
+	 * @see http://www.gradle.org/docs/current/userguide/userguide_single.html#sec:repositories
+	 */
+	repositories {
+	    mavenCentral()
+	}
+	
 	dependencies {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
 	}
 
 }
 
-apply plugin: ‘java'
-apply println 'idea'
-apply plugin: 'spring-boot'
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
 
 jar {
 	baseName = 'myapp'

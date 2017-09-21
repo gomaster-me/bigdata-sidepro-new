@@ -1,0 +1,29 @@
+spring:
+  profiles:
+   active: dev
+server:
+  port: 9999
+logging:
+  level: debug
+management:
+  security:
+    enabled: false
+#  port: ${PORT:{$SERVER_PORT:0}}
+
+---
+spring:
+  profiles: prod
+server:
+  port: 8888
+logging:
+  level: debug
+management:
+  security:
+    enabled: false
+
+
+---
+spring:
+  profiles: test
+server:
+  port: 7777
