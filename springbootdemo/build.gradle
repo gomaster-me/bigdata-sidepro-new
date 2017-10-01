@@ -4,12 +4,9 @@ buildscript {
 		springBootVersion = '1.5.7.RELEASE'
 	}
 
-	/**
-	 * Repositories
-	 * @see http://www.gradle.org/docs/current/userguide/userguide_single.html#sec:repositories
-	 */
 	repositories {
 	    mavenCentral()
+
 	}
 	
 	dependencies {
@@ -29,5 +26,13 @@ jar {
 
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-web')
+//	testCompile("org.springframework.boot:spring-boot-starter-test")
 	compile("org.springframework.boot:spring-boot-starter-test")
+}
+
+allprojects {
+	repositories {
+		maven{ url 'http://maven.aliyun.com/nexus/content/groups/public'}
+		maven{ url 'http://maven.aliyun.com/nexus/content/repositories/jcenter'}
+	}
 }

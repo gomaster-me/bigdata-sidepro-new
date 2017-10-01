@@ -1,3 +1,4 @@
+/*
 @RestController
 class WebApp{
 	@RequestMapping("/")
@@ -5,4 +6,4 @@ class WebApp{
 		"greeting from groovy"
 	}
 
-}
+}*/
