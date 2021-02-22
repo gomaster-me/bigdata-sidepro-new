@@ -1,3 +1,5 @@
+[ Nepxion/Discovery: ☀️ Nepxion Discovery is a solution for Spring Cloud with blue green, gray, weight, limitation, circuit breaker, degrade, isolation, tracing, dye, failover 蓝绿、灰度、权重、限流、熔断、降级、隔离、追踪、流量染色、故障转移](https://github.com/Nepxion/Discovery )
+[ douyu/juno: Juno 译名朱诺。这个名字来源于古罗马神话中的众神之母。它是斗鱼的微服务管理系统， 如同众神之母一样守护着所有微服务的系统。](https://github.com/douyu/juno )
 [ 面试官：你给我讲一下什么是spring依赖注入？网友：就这啊，太简单了！](https://juejin.cn/post/6931699069463035912?utm_source=gold_browser_extension )
 [ 程序员需掌握的10个Linux命令](https://juejin.cn/post/6931945834384916487?utm_source=gold_browser_extension )
 [ 关于ThreadLocal的九个知识点，看完别再说不懂了！](https://juejin.cn/post/6931692961126154254?utm_source=gold_browser_extension )
