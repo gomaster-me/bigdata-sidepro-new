@@ -11,6 +11,7 @@
         <module>core-lucene</module>
         <module>core-java</module>
         <module>rpc-services</module>
+        <module>utils</module>
     </modules>
     <packaging>pom</packaging>
 
