@@ -1,7 +1,9 @@
 package com.fan.utils.onetab;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.TreeSet;
 
 /**
@@ -10,16 +12,18 @@ import java.util.TreeSet;
 public class OneTabConverter {
     public static void main(String[] args) throws IOException {
         //BufferedReader是可以按行读取文件
-        FileInputStream inputStream = new FileInputStream("./utils/src/main/resources/onetab-2021-0222.txt");
+        FileInputStream inputStream = new FileInputStream("./utils/src/main/resources/onetab-2021-0315.txt");
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
 
         // 结果文件保存
-        FileWriter fileWriter = new FileWriter("new-onetab-20210122.md");
+        FileWriter fileWriter = new FileWriter("new-onetab-20210315.md");
 
         // 读取 调换位置调整为[]()格式
         String str;
         int count = 0;
         int emptyLine = 0;
+        List<Integer> duplicated_lines = new ArrayList<>();
+        int duplicatedSize = 0;
         while ((str = bufferedReader.readLine()) != null) {
             if ("".equals(str.trim())) {
                 emptyLine++;
@@ -31,10 +35,19 @@ public class OneTabConverter {
                 split = Arrays.copyOf(split, 2);
                 split[1] = "none 程序补充";
             }
+
             System.out.println(split[0] + " | " + split[1]);
             String newLine = String.format("[%s](%s)", split[1], split[0]);
             System.out.println("替换修改后: " + newLine);
+
             count++;
+            int hcode = newLine.hashCode();
+            if (duplicated_lines.contains(hcode)) {
+                System.out.println("重复文件不再写入: " + newLine);
+                duplicatedSize++;
+                continue;
+            }
+            duplicated_lines.add(hcode);
             fileWriter.write(newLine + "\n");
         }
 
@@ -43,7 +56,7 @@ public class OneTabConverter {
         bufferedReader.close();
         fileWriter.flush();
         fileWriter.close();
-
+        System.out.println("重复文件数为: " + duplicatedSize);
         System.out.println("文件数: " + count + " emptyLine: " + emptyLine);
         System.out.println("文件总数: " + (count + emptyLine));
     }
